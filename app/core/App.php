@@ -21,7 +21,11 @@
                 }
             }
             $this->params = $url ? array_values($url) : [];
-            call_user_func_array([$this->controller, $this->method], $this->params);
+            $output = call_user_func_array([$this->controller, $this->method], $this->params);
+            if(isset($output)){
+                header('Content-type: application/json');
+                echo json_encode($output, JSON_UNESCAPED_UNICODE);
+            }
         }
         private function parseUrl()
         {

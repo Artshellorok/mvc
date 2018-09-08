@@ -7,6 +7,6 @@
         }
         public function name($name = '')
         {
-            var_dump($this->request()->all());
+            return $this->request()->all();
         }
     }
